@@ -1,0 +1,9 @@
+/* Write your custom CSS here */
+
+table.dataTable td, table.dataTable th {
+    white-space: nowrap;
+}
+table.dataTable input, table.dataTable select {
+    width: 100%;
+    box-sizing: border-box;
+}
