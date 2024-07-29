@@ -234,6 +234,8 @@ $replacements = [
         // echo "UNITS";
         // print_r($GLOBALS['units'] );
         foreach ($GLOBALS['units'] as $unit) {
+            print_r($unit);
+            echo "===>";
             $table->addRow();
             $table->addCell(2000)->addText($srIndex);
             $table->addCell(2000)->addText('Floor/Wing');
@@ -243,6 +245,7 @@ $replacements = [
             $table->addCell(2000)->addText($unit['status']);
             $table->addCell(2000)->addText($unit['agreement_date']);
             $srIndex++;
+            echo "<===";
         }
     },
     '$client_name' => getValue($GLOBALS['project'], 'client_name'),
