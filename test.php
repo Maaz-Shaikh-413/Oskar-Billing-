@@ -249,7 +249,7 @@ $replacements = [
     },
     '$client_name' => getValue($GLOBALS['project'], 'client_name'),
     '$project_address' => getValue($GLOBALS['project'], 'project_address'),
-    '$maharera_number' => getValue($GLOBALS['project'], 'maharera_number'),
+    '$maharera_number' => 'THIS IS MAHARERANUMBER',
     '$project_name' => getValue($GLOBALS['project'], 'project_name'),
     '$architect_name' => getValue($GLOBALS['project'], 'architect_name'),
     '$engineer_name' => getValue($GLOBALS['project'], 'engineer_name'),
