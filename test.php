@@ -231,8 +231,8 @@ $replacements = [
         $table->addCell(2000)->addText('Registration date of Subregistrar');
         $srIndex = 1;
         
-        echo "UNITS";
-        print_r($GLOBALS['units'] );
+        // echo "UNITS";
+        // print_r($GLOBALS['units'] );
         foreach ($GLOBALS['units'] as $unit) {
             $table->addRow();
             $table->addCell(2000)->addText($srIndex);
