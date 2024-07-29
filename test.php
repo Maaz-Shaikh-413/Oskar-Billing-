@@ -200,7 +200,7 @@ $infrastructure = getInfrastructure($requestProjectId);
 $units = getUnitDetails($requestProjectId);
 
 
-print_r($units);
+// print_r($units);
 
 
 require_once 'PHPWord/src/PhpWord/Autoloader.php'; // Adjust the path as needed
