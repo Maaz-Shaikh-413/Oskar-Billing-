@@ -445,6 +445,10 @@
                                     var documentName = $(this).data('filename');
                                     // var unitName = $(this).data('unit-name');
                                     var projectId = $('#select-project').val();
+                                    if(projectId== undefined || projectId == ''){
+                                        alert('Please select Project first');
+                                        return;
+                                    }
                                     var url = 'generate_doc.php?fileName=' + documentName + '&projectId=' + projectId ;
                                     // console.log(url);
                                     window.location.href = url;
