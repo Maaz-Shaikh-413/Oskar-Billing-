@@ -9,7 +9,7 @@ use PhpOffice\PhpWord\IOFactory;
 // $phpWord = new \PhpOffice\PhpWord\PhpWord();
 
 
-$phpWord = IOFactory::load('your_existing_document.docx'); // Path to your existing document
+$phpWord = IOFactory::load('assets/original-docs/new-inventory-doc.docx'); // Path to your existing document
 
 
 // Output success message
