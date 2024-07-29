@@ -408,7 +408,7 @@ if ($zip_val->open($fullPathToSave) == true) {
 
     $tableXML = generateTableForSoldUnits($units);
     // print_r($tableXML);
-    $message = str_replace('$TABLE_ALL_UNITS', $tableXml , $message);
+    $message = str_replace('$TABLE_ALL_UNITS', $tableXML , $message);
 
 
 
