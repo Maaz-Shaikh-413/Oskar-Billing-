@@ -46,7 +46,7 @@
 <body>
     <?php
 
-    include ("db_config.php");
+    include("db_config.php");
 
 
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -83,6 +83,26 @@
         </div>
     </div>
 
+    <div id="modalSelectUnit" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
     <div class="page-container">
         <div class="page-header">
             <nav class="navbar navbar-expand-lg d-flex justify-content-between">
@@ -108,13 +128,10 @@
                 <div class="" id="headerNav">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a class="nav-link search-dropdown" href="#" id="searchDropDown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false"><i data-feather="search"></i></a>
-                            <div class="dropdown-menu dropdown-menu-end dropdown-lg search-drop-menu"
-                                aria-labelledby="searchDropDown">
+                            <a class="nav-link search-dropdown" href="#" id="searchDropDown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i data-feather="search"></i></a>
+                            <div class="dropdown-menu dropdown-menu-end dropdown-lg search-drop-menu" aria-labelledby="searchDropDown">
                                 <form>
-                                    <input class="form-control" type="text" placeholder="Type something.."
-                                        aria-label="Search">
+                                    <input class="form-control" type="text" placeholder="Type something.." aria-label="Search">
                                 </form>
                                 <h6 class="dropdown-header">Recent Searches</h6>
                                 <a class="dropdown-item" href="#">charts</a>
@@ -124,10 +141,8 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link notifications-dropdown" href="#" id="notificationsDropDown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">3</a>
-                            <div class="dropdown-menu dropdown-menu-end notif-drop-menu"
-                                aria-labelledby="notificationsDropDown">
+                            <a class="nav-link notifications-dropdown" href="#" id="notificationsDropDown" role="button" data-bs-toggle="dropdown" aria-expanded="false">3</a>
+                            <div class="dropdown-menu dropdown-menu-end notif-drop-menu" aria-labelledby="notificationsDropDown">
                                 <h6 class="dropdown-header">Notifications</h6>
                                 <a href="#">
                                     <div class="header-notif">
@@ -197,15 +212,11 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link profile-dropdown" href="#" id="profileDropDown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false"><img
-                                    src="assets/images/avatars/profile-image.png" alt=""></a>
-                            <div class="dropdown-menu dropdown-menu-end profile-drop-menu"
-                                aria-labelledby="profileDropDown">
+                            <a class="nav-link profile-dropdown" href="#" id="profileDropDown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="assets/images/avatars/profile-image.png" alt=""></a>
+                            <div class="dropdown-menu dropdown-menu-end profile-drop-menu" aria-labelledby="profileDropDown">
                                 <a class="dropdown-item" href="#"><i data-feather="user"></i>Profile</a>
                                 <a class="dropdown-item" href="#"><i data-feather="inbox"></i>Messages</a>
-                                <a class="dropdown-item" href="#"><i data-feather="edit"></i>Activities<span
-                                        class="badge rounded-pill bg-success">12</span></a>
+                                <a class="dropdown-item" href="#"><i data-feather="edit"></i>Activities<span class="badge rounded-pill bg-success">12</span></a>
                                 <a class="dropdown-item" href="#"><i data-feather="check-circle"></i>Tasks</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#"><i data-feather="settings"></i>Settings</a>
@@ -247,7 +258,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="d-flex align-items-center mb-4">
-                           
+
                             <div class="me-3">
                                 <label for="select-project" class="form-label mb-0">Select Project</label>
                                 <select id="select-project" name="project_id" class="form-select">
@@ -262,20 +273,16 @@
 
 
                             <div class="btn-group" role="group" aria-label="Action buttons">
-                                <button type="button" data-fileName="Form 1 - Architect-2.docx"
-                                    class="btn btn-danger btn-sm btn-download-doc me-2">
+                                <button type="button" data-fileName="Form 1 - Architect-2.docx" class="btn btn-danger btn-sm btn-download-doc me-2">
                                     Form 1
                                 </button>
-                                <button type="button" data-fileName="Form 2 - Engineer-2-2.docx"
-                                    class="btn btn-danger btn-sm btn-download-doc me-2">
+                                <button type="button" data-fileName="Form 2 - Engineer-2-2.docx" class="btn btn-danger btn-sm btn-download-doc me-2">
                                     Form 2
                                 </button>
-                                <button type="button" data-fileName="Form 3 - CA.xlsx"
-                                    class="btn btn-danger btn-sm btn-download-doc me-2">
+                                <button type="button" data-fileName="Form 3 - CA.xlsx" class="btn btn-danger btn-sm btn-download-doc me-2">
                                     Form 3 Sheet
                                 </button>
-                                <button type="button" data-fileName="Inventory Disclosure - Promoter Letterhead-2.docx"
-                                    class="btn btn-danger btn-sm btn-download-doc">
+                                <button type="button" data-fileName="Inventory Disclosure - Promoter Letterhead-2.docx" class="btn btn-danger btn-sm btn-download-doc">
                                     Inventory Sheet
                                 </button>
                             </div>
@@ -391,9 +398,9 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
-            $(document).ready(function () {
+            $(document).ready(function() {
 
-                $('#select-project').change(function () {
+                $('#select-project').change(function() {
                     var projectId = $(this).val();
 
 
@@ -409,9 +416,11 @@
                         $.ajax({
                             url: 'get_units_api.php',
                             type: 'POST',
-                            data: { project_id: projectId },
+                            data: {
+                                project_id: projectId
+                            },
                             dataType: 'json',
-                            success: function (response) {
+                            success: function(response) {
                                 console.log('Units fetched:', response);
 
 
@@ -421,7 +430,7 @@
                                 var units = response['units'];
 
 
-                                units.forEach(function (unit) {
+                                units.forEach(function(unit) {
 
                                     var htmlRow = getHTMLCodeForRow(unit);
                                     tableBody.append(htmlRow);
@@ -430,14 +439,17 @@
 
                                 // Display the last updated date
 
-                                $('.btn-download-doc').click(function (e) {
+                                $('.btn-download-doc ').click(function(e) {
                                     e.preventDefault();
+                                    // $('#modalSelectUnit').modal('show');
                                     var documentName = $(this).data('filename');
-                                    var unitName = $(this).data('unit-name');
-                                    var projectId = $(this).data('project_id');
-                                    var url = 'generate_doc.php?fileName=' + documentName + '&projectId=' + projectId + '&unitId=' + unitName;
-                                    console.log(url);
+                                    // var unitName = $(this).data('unit-name');
+                                    var projectId = $('#select-project').val();
+                                    var url = 'generate_doc.php?fileName=' + documentName + '&projectId=' + projectId ;
+                                    // console.log(url);
                                     window.location.href = url;
+
+
 
                                 });
 
@@ -470,7 +482,7 @@
                                 */
                             },
 
-                            error: function (xhr, status, error) {
+                            error: function(xhr, status, error) {
                                 console.error('Error fetching unit numbers:', error);
                             }
                         });
@@ -532,11 +544,11 @@
 
 
 
-                $('#tbl-units').on('keyup', 'input[name^="advance_"], input[name="agreement_value[]"]', function () {
+                $('#tbl-units').on('keyup', 'input[name^="advance_"], input[name="agreement_value[]"]', function() {
                     var $row = $(this).closest('tr');
 
                     var totalReceived = 0;
-                    $row.find('input[name^="advance_"]').each(function () {
+                    $row.find('input[name^="advance_"]').each(function() {
                         var value = parseFloat($(this).val()) || 0;
                         totalReceived += value;
                     });
@@ -548,7 +560,7 @@
                 });
 
 
-                $('#tbl-units').on('click', '.add-afs-btn', function () {
+                $('#tbl-units').on('click', '.add-afs-btn', function() {
                     $('#afsModalForm').empty();
                     $('#afsModalForm').append(`
             <div class="mb-3">
@@ -564,7 +576,7 @@
                 });
 
 
-                $('#tbl-units').on('click', '.add-sd-btn', function () {
+                $('#tbl-units').on('click', '.add-sd-btn', function() {
                     $('#sdModalForm').empty();
                     $('#sdModalForm').append(`
             <div class="mb-3">
@@ -579,11 +591,11 @@
                     $('#sdModal').modal('show');
                 });
 
-                $('#tbl-units').on('click', '.delete-btn', function () {
+                $('#tbl-units').on('click', '.delete-btn', function() {
                     $(this).closest('tr').remove();
                 });
 
-                $('#btn-save-data').click(function (e) {
+                $('#btn-save-data').click(function(e) {
                     e.preventDefault();
 
                     // var formData = $(this).serialize(); 
@@ -608,11 +620,11 @@
                         url: 'save_units.php?project_id=' + $("#select-project").val(),
                         type: 'POST',
                         data: JSON.stringify(requestBody),
-                        success: function (response) {
+                        success: function(response) {
                             alert('Data saved successfully.');
                             console.log(response);
                         },
-                        error: function (xhr, status, error) {
+                        error: function(xhr, status, error) {
                             alert('Error saving data.');
                             console.error('Error:', error);
                         }

@@ -123,7 +123,7 @@ function getInfrastructure($projectId)
 }
 
 
-function getUnitDetails($projectId, $unitId )
+function getUnitDetails($projectId)
 {
     include("db_config.php");
 
@@ -135,7 +135,7 @@ function getUnitDetails($projectId, $unitId )
     }
 
 
-    $sql = "SELECT * FROM `units` WHERE `unit_no` = '$unitId' and `project_id` = '$projectId'";
+    $sql = "SELECT * FROM `units` WHERE  `project_id` = '$projectId'";
     $result = $conn->query($sql);
 
     $project = null;
@@ -169,9 +169,8 @@ function getValue($obj, $key) {
 
 $requestFileName = $_GET['fileName'];
 $requestProjectId = $_GET['projectId'];
-$requestUnitId = $_GET['unitId'];
 
-if (!isset($requestProjectId) || !isset($requestFileName) || !isset($requestUnitId)) {
+if (!isset($requestProjectId) || !isset($requestFileName)) {
     echo "Check Request Params";
     return;
 }
@@ -206,7 +205,7 @@ $infrastructure = getInfrastructure($requestProjectId);
 //     return;
 // }
 
-$units = getUnitDetails($requestProjectId, $requestUnitId);
+$units = getUnitDetails($requestProjectId);
 
 
 // print_r($projectCost['planning_authority']);
@@ -332,6 +331,13 @@ if ($zip_val->open($fullPathToSave) == true) {
     
     //DataTable
 
+
+    if (strpos($requestFileName, '.xlsx') !== false) {
+        // $key_file_name = 'xl/sharedStrings.xml';
+    }
+
+
+    /*
     $message = str_replace('$unit_nos', getValue($units,'unit_nos'), $message);
     $message = str_replace('$carpet_areas', getValue($units,'carpet_areas'), $message);
     $message = str_replace('$statuses', getValue($units,'statuses'), $message);
@@ -346,7 +352,7 @@ if ($zip_val->open($fullPathToSave) == true) {
     $message = str_replace('$total_received', getValue($units,'total_received'), $message);
     $message = str_replace('$balance', getValue($units,'balance'), $message);
    
-    
+    */
 
     $zip_val->addFromString($key_file_name, $message);
     $zip_val->close();
