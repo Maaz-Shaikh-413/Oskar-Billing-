@@ -230,7 +230,8 @@ $replacements = [
         $table->addCell(2000)->addText('Sold/Booked/Unsold Reserved / Rehab/ Mortgaged/ Not for sale');
         $table->addCell(2000)->addText('Registration date of Subregistrar');
         $srIndex = 1;
-        foreach ($units as $unit) {
+        
+        foreach ($GLOBALS['units'] as $unit) {
             $table->addRow();
             $table->addCell(2000)->addText($srIndex);
             $table->addCell(2000)->addText('Floor/Wing');
