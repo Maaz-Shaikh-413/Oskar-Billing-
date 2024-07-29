@@ -159,13 +159,13 @@ function getValue($obj, $key)
 
 
 // $requestFileName = $_GET['fileName'];
-// $requestProjectId = $_GET['projectId'];
+$requestProjectId = $_GET['projectId'];
 
 // if (!isset($requestProjectId) || !isset($requestFileName)) {
 //     echo "Check Request Params";
 //     return;
 // }
-$requestProjectId = 8;
+// $requestProjectId = 8;
 
 
 $project = getProjectDetails($requestProjectId);
