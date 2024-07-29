@@ -204,81 +204,6 @@ $units = getUnitDetails($requestProjectId);
 
 
 
-function  generateTableForSoldUnits($units)
-{
-
-
-    // Define your table XML
-    $tableXml = '
-        <w:tbl>
-            <w:tblPr>
-                <w:tblBorders>
-                    <w:top w:val="single" w:sz="4" w:space="0" w:color="000000"/>
-                    <w:left w:val="single" w:sz="4" w:space="0" w:color="000000"/>
-                    <w:bottom w:val="single" w:sz="4" w:space="0" w:color="000000"/>
-                    <w:right w:val="single" w:sz="4" w:space="0" w:color="000000"/>
-                    <w:insideH w:val="single" w:sz="4" w:space="0" w:color="000000"/>
-                    <w:insideV w:val="single" w:sz="4" w:space="0" w:color="000000"/>
-                </w:tblBorders>
-            </w:tblPr>
-            <w:tr>
-                <w:tc>
-                    <w:tcPr/>
-                    <w:p>
-                        <w:r>
-                            <w:t>Header 1</w:t>
-                        </w:r>
-                    </w:p>
-                </w:tc>
-                <w:tc>
-                    <w:tcPr/>
-                    <w:p>
-                        <w:r>
-                            <w:t>Header 2</w:t>
-                        </w:r>
-                    </w:p>
-                </w:tc>
-                <w:tc>
-                    <w:tcPr/>
-                    <w:p>
-                        <w:r>
-                            <w:t>Header 3</w:t>
-                        </w:r>
-                    </w:p>
-                </w:tc>
-            </w:tr>';
-
-    // Add rows to the table
-    for ($i = 1; $i <= 5; $i++) {
-        $tableXml .= '
-            <w:tr>
-                <w:tc>
-                    <w:tcPr/>
-                    <w:p>
-                        <w:r>
-                            <w:t>Row ' . $i . ', Cell 1</w:t>
-                        </w:r>
-                    </w:p>
-                </w:tc>
-                <w:tc>
-                    <w:tcPr/>
-                    <w:p>
-                        <w:r>
-                            <w:t>Row ' . $i . ', Cell 2</w:t>
-                        </w:r>
-                    </w:p>
-                </w:tc>
-                <w:tc>
-                    <w:tcPr/>
-                    <w:p>
-                        <w:r><w:t>Row ' . $i . ', Cell 3</w:t></w:r></w:p></w:tc></w:tr>';
-    }
-
-    // Close the table tag
-    $tableXml .= '</w:tbl>';
-
-    return $tableXml;
-}
 
 
 
@@ -401,9 +326,7 @@ if ($zip_val->open($fullPathToSave) == true) {
 
     //DataTable
 
-    $tableXML = generateTableForSoldUnits($units);
-    // print_r($tableXML);
-    $message = str_replace('$TABLE_ALL_UNITS', $tableXML , $message);
+    
 
 
 
