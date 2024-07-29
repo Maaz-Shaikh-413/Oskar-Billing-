@@ -209,11 +209,69 @@ function  generateTableForSoldUnits($units)
 
 
     // Define your table XML
-    $tableXml = '<w:tbl><w:tblPr><w:tblBorders><w:topw:val="single"w:sz="4"w:space="0"w:color="000000"/><w:leftw:val="single"w:sz="4"w:space="0"w:color="000000"/><w:bottomw:val="single"w:sz="4"w:space="0"w:color="000000"/><w:rightw:val="single"w:sz="4"w:space="0"w:color="000000"/><w:insideHw:val="single"w:sz="4"w:space="0"w:color="000000"/><w:insideVw:val="single"w:sz="4"w:space="0"w:color="000000"/></w:tblBorders></w:tblPr><w:tr><w:tc><w:tcPr/><w:p><w:r><w:t>Header1</w:t></w:r></w:p></w:tc><w:tc><w:tcPr/><w:p><w:r><w:t>Header2</w:t></w:r></w:p></w:tc><w:tc><w:tcPr/><w:p><w:r><w:t>Header3</w:t></w:r></w:p></w:tc></w:tr>';
+    $tableXml = '
+        <w:tbl>
+            <w:tblPr>
+                <w:tblBorders>
+                    <w:top w:val="single" w:sz="4" w:space="0" w:color="000000"/>
+                    <w:left w:val="single" w:sz="4" w:space="0" w:color="000000"/>
+                    <w:bottom w:val="single" w:sz="4" w:space="0" w:color="000000"/>
+                    <w:right w:val="single" w:sz="4" w:space="0" w:color="000000"/>
+                    <w:insideH w:val="single" w:sz="4" w:space="0" w:color="000000"/>
+                    <w:insideV w:val="single" w:sz="4" w:space="0" w:color="000000"/>
+                </w:tblBorders>
+            </w:tblPr>
+            <w:tr>
+                <w:tc>
+                    <w:tcPr/>
+                    <w:p>
+                        <w:r>
+                            <w:t>Header 1</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr/>
+                    <w:p>
+                        <w:r>
+                            <w:t>Header 2</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr/>
+                    <w:p>
+                        <w:r>
+                            <w:t>Header 3</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+            </w:tr>';
 
     // Add rows to the table
     for ($i = 1; $i <= 5; $i++) {
-        $tableXml .= '<w:tr><w:tc><w:tcPr/><w:p><w:r><w:t>Row'.$i.',Cell1</w:t></w:r></w:p></w:tc><w:tc><w:tcPr/><w:p><w:r><w:t>Row'.$i.',Cell2</w:t></w:r></w:p></w:tc><w:tc><w:tcPr/><w:p><w:r><w:t>Row'.$i.',Cell3</w:t></w:r></w:p></w:tc></w:tr>';
+        $tableXml .= '
+            <w:tr>
+                <w:tc>
+                    <w:tcPr/>
+                    <w:p>
+                        <w:r>
+                            <w:t>Row ' . $i . ', Cell 1</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr/>
+                    <w:p>
+                        <w:r>
+                            <w:t>Row ' . $i . ', Cell 2</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr/>
+                    <w:p>
+                        <w:r><w:t>Row ' . $i . ', Cell 3</w:t></w:r></w:p></w:tc></w:tr>';
     }
 
     // Close the table tag
