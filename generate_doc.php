@@ -2,12 +2,12 @@
 // Manually include PHPWord files
 require 'PHPWord/src/PhpWord/PhpWord.php';
 require 'PHPWord/src/PhpWord/IOFactory.php';
-require 'PHPWord/src/PhpWord/SimpleType/Jc.php';
+// require 'PHPWord/src/PhpWord/SimpleType/Jc.php';
 
 // Use the PHPWord namespace
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\IOFactory;
-use PhpOffice\PhpWord\SimpleType\Jc;
+// use PhpOffice\PhpWord\SimpleType\Jc;
 
 // Create a new PHPWord Object
 $phpWord = new PhpWord();
@@ -17,13 +17,13 @@ $titleStyle = [
     'name' => 'Georgia',
     'size' => 15,
     'bold' => true,
-    'alignment' => Jc::CENTER
+    // 'alignment' => Jc::CENTER
 ];
 $subtitleStyle = [
     'name' => 'Georgia',
     'size' => 12,
     'bold' => true,
-    'alignment' => Jc::CENTER
+    // 'alignment' => Jc::CENTER
 ];
 $highlightStyle = [
     'name' => 'Calibri',
