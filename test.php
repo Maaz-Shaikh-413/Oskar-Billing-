@@ -130,12 +130,12 @@ function getUnitDetails($projectId)
     $sql = "SELECT * FROM `units` WHERE  `project_id` = '$projectId'";
     $result = $conn->query($sql);
 
-    $project = null;
+    $project = array();
 
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            $project = $row;
-            break;
+            array_push($project,$row);
+            
         }
     }
 
