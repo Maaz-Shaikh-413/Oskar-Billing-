@@ -281,6 +281,8 @@ function  generateTableForSoldUnits($units)
 
     // Close the table tag
     $tableXml .= '</w:tbl>';
+
+    return $tableXml;
 }
 
 
