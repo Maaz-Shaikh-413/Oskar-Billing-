@@ -21,14 +21,12 @@ function getProjectDetails($projectId)
         while ($row = $result->fetch_assoc()) {
             $project = $row;
             break;
-
         }
     }
 
     $conn->close();
 
     return $project;
-
 }
 
 function getProjectCost($projectId)
@@ -51,14 +49,12 @@ function getProjectCost($projectId)
         while ($row = $result->fetch_assoc()) {
             $project = $row;
             break;
-
         }
     }
 
     $conn->close();
 
     return $project;
-
 }
 
 function getSiteProgress($projectId)
@@ -77,18 +73,16 @@ function getSiteProgress($projectId)
     $result = $conn->query($sql);
 
     $project = null;
- 
+
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             $project = $row;
             break;
-
         }
     }
     $conn->close();
 
     return $project;
-
 }
 
 function getInfrastructure($projectId)
@@ -112,14 +106,12 @@ function getInfrastructure($projectId)
         while ($row = $result->fetch_assoc()) {
             $project = $row;
             break;
-
         }
     }
 
     $conn->close();
 
     return $project;
-
 }
 
 
@@ -150,20 +142,19 @@ function getUnitDetails($projectId)
     $conn->close();
 
     return $project;
-
 }
 
-function getValue($obj, $key) {
+function getValue($obj, $key)
+{
     $value = '';
     // if (!is_null($obj) && isset($obj['excavation'])) {
     //     $message = str_replace('$PROMOTER_NAME', $siteProgress['excavation'], $message);
     // }
 
-    if(!is_null($obj)  && key_exists($key,$obj)){
+    if (!is_null($obj)  && key_exists($key, $obj)) {
         $value = $obj[$key];
     }
-    return $value;    
-    
+    return $value;
 }
 
 
@@ -212,6 +203,88 @@ $units = getUnitDetails($requestProjectId);
 
 
 
+
+function  generateTableForSoldUnits($units)
+{
+
+
+    // Define your table XML
+    $tableXml = '
+        <w:tbl>
+            <w:tblPr>
+                <w:tblBorders>
+                    <w:top w:val="single" w:sz="4" w:space="0" w:color="000000"/>
+                    <w:left w:val="single" w:sz="4" w:space="0" w:color="000000"/>
+                    <w:bottom w:val="single" w:sz="4" w:space="0" w:color="000000"/>
+                    <w:right w:val="single" w:sz="4" w:space="0" w:color="000000"/>
+                    <w:insideH w:val="single" w:sz="4" w:space="0" w:color="000000"/>
+                    <w:insideV w:val="single" w:sz="4" w:space="0" w:color="000000"/>
+                </w:tblBorders>
+            </w:tblPr>
+            <w:tr>
+                <w:tc>
+                    <w:tcPr/>
+                    <w:p>
+                        <w:r>
+                            <w:t>Header 1</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr/>
+                    <w:p>
+                        <w:r>
+                            <w:t>Header 2</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr/>
+                    <w:p>
+                        <w:r>
+                            <w:t>Header 3</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+            </w:tr>';
+
+    // Add rows to the table
+    for ($i = 1; $i <= 5; $i++) {
+        $tableXml .= '
+            <w:tr>
+                <w:tc>
+                    <w:tcPr/>
+                    <w:p>
+                        <w:r>
+                            <w:t>Row ' . $i . ', Cell 1</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr/>
+                    <w:p>
+                        <w:r>
+                            <w:t>Row ' . $i . ', Cell 2</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr/>
+                    <w:p>
+                        <w:r>
+                            <w:t>Row ' . $i . ', Cell 3</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+            </w:tr>';
+    }
+
+    // Close the table tag
+    $tableXml .= '</w:tbl>';
+}
+
+
+
 $filePath = './assets/original-docs/' . $requestFileName;
 
 $fileToSavePath = './assets/modified/';
@@ -240,96 +313,100 @@ if ($zip_val->open($fullPathToSave) == true) {
     $message = $zip_val->getFromName($key_file_name);
 
 
-    
+
     //project
-    $message = str_replace('$client_name', getValue($project,'client_name'), $message);
-    $message = str_replace('$project_address', getValue($project,'project_address'), $message);
-    $message = str_replace('$maharera_number', getValue($project,'maharera_number'), $message);
-    $message = str_replace('$project_name', getValue($project,'project_name'), $message);
-    $message = str_replace('$architect_name', getValue($project,'architect_name'), $message);
-    $message = str_replace('$engineer_name', getValue($project,'engineer_name'), $message);
+    $message = str_replace('$client_name', getValue($project, 'client_name'), $message);
+    $message = str_replace('$project_address', getValue($project, 'project_address'), $message);
+    $message = str_replace('$maharera_number', getValue($project, 'maharera_number'), $message);
+    $message = str_replace('$project_name', getValue($project, 'project_name'), $message);
+    $message = str_replace('$architect_name', getValue($project, 'architect_name'), $message);
+    $message = str_replace('$engineer_name', getValue($project, 'engineer_name'), $message);
 
     //project_cost
-    $message = str_replace('$planning_authority', getValue($project_costs,'planning_authority'), $message);
-    $message = str_replace('$balance_incurred', getValue($project_costs,'balance_incurred'), $message);
-    $message = str_replace('$estimated_cost', getValue($project_costs,'estimated_cost'), $message);
-    $message = str_replace('$incurred_cost', getValue($project_costs,'incurred_cost'), $message);
+    $message = str_replace('$planning_authority', getValue($project_costs, 'planning_authority'), $message);
+    $message = str_replace('$balance_incurred', getValue($project_costs, 'balance_incurred'), $message);
+    $message = str_replace('$estimated_cost', getValue($project_costs, 'estimated_cost'), $message);
+    $message = str_replace('$incurred_cost', getValue($project_costs, 'incurred_cost'), $message);
 
 
 
     //infrastructure
-    $message = str_replace('$internal_roads_select', getValue($infrastructure,'internal_roads_select'), $message);
-    $message = str_replace('$internal_roads_percentage', getValue($infrastructure,'internal_roads_percentage'), $message);
-    $message = str_replace('$internal_roads_details', getValue($infrastructure,'internal_roads_details'), $message);
+    $message = str_replace('$internal_roads_select', getValue($infrastructure, 'internal_roads_select'), $message);
+    $message = str_replace('$internal_roads_percentage', getValue($infrastructure, 'internal_roads_percentage'), $message);
+    $message = str_replace('$internal_roads_details', getValue($infrastructure, 'internal_roads_details'), $message);
 
-    $message = str_replace('$water_supply_select', getValue($infrastructure,'water_supply_select'), $message);
-    $message = str_replace('$water_supply_percentage', getValue($infrastructure,'water_supply_percentage'), $message);
-    $message = str_replace('$water_supply_details', getValue($infrastructure,'water_supply_details'), $message);
+    $message = str_replace('$water_supply_select', getValue($infrastructure, 'water_supply_select'), $message);
+    $message = str_replace('$water_supply_percentage', getValue($infrastructure, 'water_supply_percentage'), $message);
+    $message = str_replace('$water_supply_details', getValue($infrastructure, 'water_supply_details'), $message);
 
-    $message = str_replace('$sewerage_select', getValue($infrastructure,'sewerage_select'), $message);
-    $message = str_replace('$sewerage_percentage', getValue($infrastructure,'sewerage_percentage'), $message);
-    $message = str_replace('$sewerage_details', getValue($infrastructure,'sewerage_details'), $message);
+    $message = str_replace('$sewerage_select', getValue($infrastructure, 'sewerage_select'), $message);
+    $message = str_replace('$sewerage_percentage', getValue($infrastructure, 'sewerage_percentage'), $message);
+    $message = str_replace('$sewerage_details', getValue($infrastructure, 'sewerage_details'), $message);
 
-    $message = str_replace('$storm_water_drains_select', getValue($infrastructure,'storm_water_drains_select'), $message);
-    $message = str_replace('$storm_water_drains_percentage', getValue($infrastructure,'storm_water_drains_percentage'), $message);
-    $message = str_replace('$storm_water_drains_details', getValue($infrastructure,'storm_water_drains_details'), $message);
+    $message = str_replace('$storm_water_drains_select', getValue($infrastructure, 'storm_water_drains_select'), $message);
+    $message = str_replace('$storm_water_drains_percentage', getValue($infrastructure, 'storm_water_drains_percentage'), $message);
+    $message = str_replace('$storm_water_drains_details', getValue($infrastructure, 'storm_water_drains_details'), $message);
 
-    $message = str_replace('$landscaping_select', getValue($infrastructure,'landscaping_select'), $message);
-    $message = str_replace('$landscaping_percentage', getValue($infrastructure,'landscaping_percentage'), $message);
-    $message = str_replace('$landscaping_details', getValue($infrastructure,'landscaping_details'), $message);
+    $message = str_replace('$landscaping_select', getValue($infrastructure, 'landscaping_select'), $message);
+    $message = str_replace('$landscaping_percentage', getValue($infrastructure, 'landscaping_percentage'), $message);
+    $message = str_replace('$landscaping_details', getValue($infrastructure, 'landscaping_details'), $message);
 
-    $message = str_replace('$street_lighting_select', getValue($infrastructure,'street_lighting_select'), $message);
-    $message = str_replace('$street_lighting_percentage', getValue($infrastructure,'street_lighting_percentage'), $message);
-    $message = str_replace('$street_lighting_details', getValue($infrastructure,'street_lighting_details'), $message);
+    $message = str_replace('$street_lighting_select', getValue($infrastructure, 'street_lighting_select'), $message);
+    $message = str_replace('$street_lighting_percentage', getValue($infrastructure, 'street_lighting_percentage'), $message);
+    $message = str_replace('$street_lighting_details', getValue($infrastructure, 'street_lighting_details'), $message);
 
-    $message = str_replace('$community_buildings_select', getValue($infrastructure,'community_buildings_select'), $message);
-    $message = str_replace('$community_buildings_percentage', getValue($infrastructure,'community_buildings_percentage'), $message);
-    $message = str_replace('$community_buildings_details', getValue($infrastructure,'community_buildings_details'), $message);
+    $message = str_replace('$community_buildings_select', getValue($infrastructure, 'community_buildings_select'), $message);
+    $message = str_replace('$community_buildings_percentage', getValue($infrastructure, 'community_buildings_percentage'), $message);
+    $message = str_replace('$community_buildings_details', getValue($infrastructure, 'community_buildings_details'), $message);
 
-    $message = str_replace('$sewage_treatment_select', getValue($infrastructure,'sewage_treatment_select'), $message);
-    $message = str_replace('$sewage_treatment_percentage', getValue($infrastructure,'sewage_treatment_percentage'), $message);
-    $message = str_replace('$sewage_treatment_details', getValue($infrastructure,'sewage_treatment_details'), $message);
-    
-    $message = str_replace('$solid_waste_management_select', getValue($infrastructure,'solid_waste_management_select'), $message);
-    $message = str_replace('$solid_waste_management_percentage', getValue($infrastructure,'solid_waste_management_percentage'), $message);
-    $message = str_replace('$solid_waste_management_details', getValue($infrastructure,'solid_waste_management_details'), $message);
-    
-    $message = str_replace('$water_conservation_select', getValue($infrastructure,'water_conservation_select'), $message);
-    $message = str_replace('$water_conservation_percentage', getValue($infrastructure,'water_conservation_percentage'), $message);
-    $message = str_replace('$water_conservation_details', getValue($infrastructure,'water_conservation_details'), $message);
-    
-    $message = str_replace('$energy_management_select', getValue($infrastructure,'energy_management_select'), $message);
-    $message = str_replace('$energy_management_percentage', getValue($infrastructure,'energy_management_percentage'), $message);
-    $message = str_replace('$energy_management_details', getValue($infrastructure,'energy_management_details'), $message);
-    
-    $message = str_replace('$fire_protection_select', getValue($infrastructure,'fire_protection_select'), $message);
-    $message = str_replace('$fire_protection_percentage', getValue($infrastructure,'fire_protection_percentage'), $message);
-    $message = str_replace('$fire_protection_details', getValue($infrastructure,'fire_protection_details'), $message);
-    
-    $message = str_replace('$electrical_room_select', getValue($infrastructure,'electrical_room_select'), $message);
-    $message = str_replace('$electrical_room_percentage', getValue($infrastructure,'electrical_room_percentage'), $message);
-    $message = str_replace('$electrical_room_details', getValue($infrastructure,'electrical_room_details'), $message);
-    
-    $message = str_replace('$miscellaneous_select', getValue($infrastructure,'miscellaneous_select'), $message);
-    $message = str_replace('$miscellaneous_percentage', getValue($infrastructure,'miscellaneous_percentage'), $message);
-    $message = str_replace('$miscellaneous_details', getValue($infrastructure,'miscellaneous_details'), $message);
-    
+    $message = str_replace('$sewage_treatment_select', getValue($infrastructure, 'sewage_treatment_select'), $message);
+    $message = str_replace('$sewage_treatment_percentage', getValue($infrastructure, 'sewage_treatment_percentage'), $message);
+    $message = str_replace('$sewage_treatment_details', getValue($infrastructure, 'sewage_treatment_details'), $message);
+
+    $message = str_replace('$solid_waste_management_select', getValue($infrastructure, 'solid_waste_management_select'), $message);
+    $message = str_replace('$solid_waste_management_percentage', getValue($infrastructure, 'solid_waste_management_percentage'), $message);
+    $message = str_replace('$solid_waste_management_details', getValue($infrastructure, 'solid_waste_management_details'), $message);
+
+    $message = str_replace('$water_conservation_select', getValue($infrastructure, 'water_conservation_select'), $message);
+    $message = str_replace('$water_conservation_percentage', getValue($infrastructure, 'water_conservation_percentage'), $message);
+    $message = str_replace('$water_conservation_details', getValue($infrastructure, 'water_conservation_details'), $message);
+
+    $message = str_replace('$energy_management_select', getValue($infrastructure, 'energy_management_select'), $message);
+    $message = str_replace('$energy_management_percentage', getValue($infrastructure, 'energy_management_percentage'), $message);
+    $message = str_replace('$energy_management_details', getValue($infrastructure, 'energy_management_details'), $message);
+
+    $message = str_replace('$fire_protection_select', getValue($infrastructure, 'fire_protection_select'), $message);
+    $message = str_replace('$fire_protection_percentage', getValue($infrastructure, 'fire_protection_percentage'), $message);
+    $message = str_replace('$fire_protection_details', getValue($infrastructure, 'fire_protection_details'), $message);
+
+    $message = str_replace('$electrical_room_select', getValue($infrastructure, 'electrical_room_select'), $message);
+    $message = str_replace('$electrical_room_percentage', getValue($infrastructure, 'electrical_room_percentage'), $message);
+    $message = str_replace('$electrical_room_details', getValue($infrastructure, 'electrical_room_details'), $message);
+
+    $message = str_replace('$miscellaneous_select', getValue($infrastructure, 'miscellaneous_select'), $message);
+    $message = str_replace('$miscellaneous_percentage', getValue($infrastructure, 'miscellaneous_percentage'), $message);
+    $message = str_replace('$miscellaneous_details', getValue($infrastructure, 'miscellaneous_details'), $message);
+
     //site_progress
 
-    $message = str_replace('$excavation', getValue($siteProgress,'excavation'), $message);
-    $message = str_replace('$basements', getValue($siteProgress,'basements'), $message);
-    $message = str_replace('$podiums', getValue($siteProgress,'podiums'), $message);
-    $message = str_replace('$plinth', getValue($siteProgress,'plinth'), $message);
-    $message = str_replace('$stilt_floor', getValue($siteProgress,'stilt_floor'), $message);
-    $message = str_replace('$super_structure_slabs', getValue($siteProgress,'super_structure_slabs'), $message);
-    $message = str_replace('$internal_walls', getValue($siteProgress,'internal_walls'), $message);
-    $message = str_replace('$sanitary_fittings', getValue($siteProgress,'sanitary_fittings'), $message);
-    $message = str_replace('$staircases', getValue($siteProgress,'staircases'), $message);
-    $message = str_replace('$external_plumbing', getValue($siteProgress,'external_plumbing'), $message);
-    $message = str_replace('$fire_fighting_arrangements', getValue($siteProgress,'fire_fighting_arrangements'), $message);
-   
-    
+    $message = str_replace('$excavation', getValue($siteProgress, 'excavation'), $message);
+    $message = str_replace('$basements', getValue($siteProgress, 'basements'), $message);
+    $message = str_replace('$podiums', getValue($siteProgress, 'podiums'), $message);
+    $message = str_replace('$plinth', getValue($siteProgress, 'plinth'), $message);
+    $message = str_replace('$stilt_floor', getValue($siteProgress, 'stilt_floor'), $message);
+    $message = str_replace('$super_structure_slabs', getValue($siteProgress, 'super_structure_slabs'), $message);
+    $message = str_replace('$internal_walls', getValue($siteProgress, 'internal_walls'), $message);
+    $message = str_replace('$sanitary_fittings', getValue($siteProgress, 'sanitary_fittings'), $message);
+    $message = str_replace('$staircases', getValue($siteProgress, 'staircases'), $message);
+    $message = str_replace('$external_plumbing', getValue($siteProgress, 'external_plumbing'), $message);
+    $message = str_replace('$fire_fighting_arrangements', getValue($siteProgress, 'fire_fighting_arrangements'), $message);
+
+
     //DataTable
+
+    $tableXML = generateTableForSoldUnits($units);
+    $message = str_replace('$TABLE_ALL_UNITS', $tableXml , $message);
+
 
 
     if (strpos($requestFileName, '.xlsx') !== false) {

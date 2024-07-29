@@ -282,7 +282,7 @@
                                 <button type="button" data-fileName="Form 3 - CA.xlsx" class="btn btn-danger btn-sm btn-download-doc me-2">
                                     Form 3 Sheet
                                 </button>
-                                <button type="button" data-fileName="Inventory Disclosure - Promoter Letterhead-2.docx" class="btn btn-danger btn-sm btn-download-doc">
+                                <button type="button" data-fileName="new-inventory-doc.docx"  data-fileNamees="Inventory Disclosure - Promoter Letterhead-2.docx" class="btn btn-danger btn-sm btn-download-doc">
                                     Inventory Sheet
                                 </button>
                             </div>
