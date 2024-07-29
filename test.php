@@ -12,7 +12,7 @@ use PhpOffice\PhpWord\IOFactory;
 $phpWord = IOFactory::load('assets/original-docs/new-inventory-doc.docx'); // Path to your existing document
 
 // Find the token and replace it with a table
-$token = '$_TABLE';
+$token = '$TABLE_ALL_UNITS';
 $sections = $phpWord->getSections();
 
 foreach ($sections as $section) {
