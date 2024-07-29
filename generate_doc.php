@@ -1,7 +1,8 @@
 <?php
-// Include PHPWord library
-require 'PHPWord/src/PhpWord/Autoloader.php';
-\PhpOffice\PhpWord\Autoloader::register();
+// Manually include PHPWord files
+require 'PHPWord/src/PhpWord/PhpWord.php';
+require 'PHPWord/src/PhpWord/IOFactory.php';
+require 'PHPWord/src/PhpWord/SimpleType/Jc.php';
 
 // Use the PHPWord namespace
 use PhpOffice\PhpWord\PhpWord;
