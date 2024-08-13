@@ -213,7 +213,7 @@ use PhpOffice\PhpWord\IOFactory;
 // $phpWord = new \PhpOffice\PhpWord\PhpWord();
 
 
-$phpWord = IOFactory::load('assets/original-docs/Form 1 - Architect-2.docx'); // Path to your existing document
+$phpWord = IOFactory::load('assets/original-docs/new-inventory-doc.docx'); // Path to your existing document
 
 // Define the tokens and their replacements
 $replacements = [

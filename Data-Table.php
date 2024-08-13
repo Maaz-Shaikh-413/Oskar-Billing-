@@ -450,6 +450,9 @@
                                         return;
                                     }
                                     var url = 'generate_doc.php?fileName=' + documentName + '&projectId=' + projectId ;
+                                    if(documentName == 'new-inventory-doc.docx'){
+                                        var url = 'generate_new_inventory_doc.php?fileName=' + documentName + '&projectId=' + projectId ;
+                                    }
                                     console.log(url);
                                     window.location.href = url;
 
